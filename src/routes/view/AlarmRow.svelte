@@ -2,6 +2,18 @@
     import type {Alarm} from "@prisma/client";
 
     export let alarm: Alarm
+
+    let handleCheckboxChanged = async () => {
+        const response = await fetch('/api/updateAlarm', {
+            method: 'POST',
+            body: JSON.stringify(alarm),
+            headers: {
+                'content-type': 'application/json',
+            },
+        });
+
+        await response.json()
+    }
 </script>
 
 <div class="card w-11/12 bg-base-100 shadow-xl">
@@ -10,7 +22,7 @@
             {alarm.time}
         </div>
         <div>
-            {alarm.enabled}
+            <input bind:checked={alarm.enabled} type="checkbox" class="toggle toggle-primary" on:change={handleCheckboxChanged}/>
         </div>
     </div>
 </div>
