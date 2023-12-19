@@ -11,7 +11,15 @@ datasource db {
 }
 
 model Alarm {
-  id          Int      @id @default(autoincrement())
-  time        DateTime
-  reoccurring String
+  id      Int      @id @default(autoincrement())
+  enabled Boolean  @default(true)
+  time    String
+  actions Action[]
+}
+
+model Action {
+  id      Int    @id @default(autoincrement())
+  day     String
+  alarmId Int
+  alarm   Alarm  @relation(fields: [alarmId], references: [id])
 }
