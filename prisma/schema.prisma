@@ -23,3 +23,8 @@ model Action {
   alarmId Int
   alarm   Alarm  @relation(fields: [alarmId], references: [id])
 }
+
+model Lamp {
+  id   Int     @id @default(autoincrement())
+  isOn Boolean
+}
