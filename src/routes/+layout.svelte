@@ -1,7 +1,22 @@
 <script lang="ts">
     import "../app.css"
     import { page } from "$app/stores";
+    import type {LayoutData} from "./$types";
+    let form: HTMLFormElement;
+    export let data: LayoutData;
+    let isOn = data.isOn;
     import AnimatedRoute from "$lib/components/AnimatedRoute.svelte";
+
+    const handlesSubmit = async () =>
+    {
+        await fetch('/api/alarmControl', {
+            method: "POST",
+            body: JSON.stringify({
+                isOn: isOn
+            })
+        });
+    }
+
 </script>
 
 <nav class="flex justify-center my-6">
@@ -20,7 +35,14 @@
 
     </ul>
 </nav>
-
+<div class="card w-4/6 bg-neutral text-neutral-content mx-auto mb-10">
+    <div class="card-body items-center text-center">
+        <h2 class="card-title">Alarm</h2>
+        <form bind:this={form} method="POST" action="/alarmControl?/setLamp" on:submit|preventDefault={handlesSubmit}>
+            <input type="checkbox" class="toggle toggle-accent" name="isOn" value="isOn" bind:checked={isOn} on:change={() => form.requestSubmit()}>
+        </form>
+    </div>
+</div>
 <AnimatedRoute>
     <main class = "card min-w-4/6 lg:w-1/3 bg-neutral text-neutral-content mx-auto">
         <div class="card-body items-center text-center">

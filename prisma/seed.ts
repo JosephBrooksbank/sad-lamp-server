@@ -4,7 +4,9 @@ const prisma = new PrismaClient();
 async function main() {
     const lamp = await prisma.lamp.upsert({
         where: {id: 1},
-        update: {},
+        update: {
+            isOn: false,
+        },
         create: {
             isOn: false
         }

@@ -25,6 +25,7 @@ model Action {
 }
 
 model Lamp {
-  id   Int     @id @default(autoincrement())
-  isOn Boolean
+  id          Int      @id @default(autoincrement())
+  isOn        Boolean
+  lastChecked DateTime @default(now())
 }
