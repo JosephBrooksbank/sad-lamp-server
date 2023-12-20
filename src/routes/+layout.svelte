@@ -37,7 +37,7 @@
 </nav>
 <div class="card w-4/6 bg-neutral text-neutral-content mx-auto mb-10">
     <div class="card-body items-center text-center">
-        <h2 class="card-title">Alarm</h2>
+        <h2 class="card-title">Lamp</h2>
         <form bind:this={form} method="POST" action="/alarmControl?/setLamp" on:submit|preventDefault={handlesSubmit}>
             <input type="checkbox" class="toggle toggle-accent" name="isOn" value="isOn" bind:checked={isOn} on:change={() => form.requestSubmit()}>
         </form>
