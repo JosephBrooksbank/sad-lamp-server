@@ -35,7 +35,7 @@
 
     </ul>
 </nav>
-<div class="card w-4/6 bg-neutral text-neutral-content mx-auto mb-10">
+<div class="card min-w-4/6 lg:w-1/3 bg-neutral text-neutral-content mx-auto mb-10">
     <div class="card-body items-center text-center">
         <h2 class="card-title">Lamp</h2>
         <form bind:this={form} method="POST" action="/alarmControl?/setLamp" on:submit|preventDefault={handlesSubmit}>
