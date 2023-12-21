@@ -15,6 +15,7 @@ model Alarm {
   enabled Boolean  @default(true)
   time    String
   actions Action[]
+  lastRun String @default("")
 }
 
 model Action {
