@@ -21,7 +21,7 @@
 </script>
 
 <div class="card w-11/12 bg-base-100 shadow-xl">
-    <div class="card-body flex flex-row flex justify-between">
+    <div class="card-body flex flex-row justify-between">
         <div>
             {alarm.time}
         </div>
