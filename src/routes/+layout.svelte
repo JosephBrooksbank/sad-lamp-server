@@ -44,10 +44,9 @@
     </div>
 </div>
 <AnimatedRoute>
-    <main class = "card min-w-4/6 lg:w-1/3 bg-neutral text-neutral-content mx-auto">
-        <div class="card-body items-center text-center">
-            <slot/>
-        </div>
+
+    <main class="flex flex-col gap-10">
+        <slot/>
     </main>
 </AnimatedRoute>
 

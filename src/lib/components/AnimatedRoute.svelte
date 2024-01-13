@@ -2,7 +2,6 @@
 
 import { page } from "$app/stores";
 import { fly } from "svelte/transition";
-console.log($page)
 </script>
 
 {#key $page.url.pathname}

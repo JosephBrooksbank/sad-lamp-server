@@ -2,6 +2,21 @@ import type { Actions} from "./$types";
 import { prisma } from "$lib/server/db/prisma";
 import { fail } from "@sveltejs/kit";
 
+export const load = async () => {
+    return {
+        alarms: await prisma.alarm.findMany(
+            {
+                orderBy: [
+                    {
+                        time: 'asc'
+                    }
+                ]
+            }
+        )
+    }
+
+}
+
 export const actions  = {
     addAlarm: async ({request}) => {
         const data = await request.formData();
