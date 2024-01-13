@@ -8,7 +8,9 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"prod": "node -r dotenv/config build",
+		"deploy": "vite build && node -r dotenv/config build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -39,6 +41,7 @@
 		"@prisma/client": "^5.7.1",
 		"@types/better-sqlite3": "^7.6.8",
 		"better-sqlite3": "^9.2.2",
+		"dotenv": "^16.3.1",
 		"luxon": "^3.4.4",
 		"svelte-fa": "^3.0.4",
 		"ts-node": "^10.9.2"
