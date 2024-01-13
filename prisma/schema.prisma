@@ -15,7 +15,7 @@ model Alarm {
   enabled Boolean  @default(true)
   time    String
   actions Action[]
-  lastRun String @default("")
+  lastRun String   @default("")
 }
 
 model Action {
@@ -26,7 +26,8 @@ model Action {
 }
 
 model Lamp {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   isOn        Boolean
-  lastChecked DateTime @default(now())
+  lastChecked DateTime  @default(now())
+  turnedOn    DateTime?
 }

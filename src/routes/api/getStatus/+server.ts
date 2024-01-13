@@ -25,18 +25,22 @@ export const GET: RequestHandler = async () => {
     if (lamp == null) {
         throw new Error("No Lamp record");
     }
+
+    if (lamp.isOn && DateTime.fromISO(lamp.turnedOn!.toISOString()).diffNow("minutes").negate().minutes > 60) {
+        lamp = await setState(false);
+    }
+
     if (nextAlarm == null) {
         return json({
             nextAlarm: "no more alarms today",
             isOn: lamp.isOn
         })
     }
+    const lastDayRan = nextAlarm.lastRun ? DateTime.fromISO(nextAlarm.lastRun) : DateTime.now()
 
-    const lastDayRan = DateTime.fromISO(nextAlarm.lastRun);
-
-    if (currentTime == nextAlarm.time && !DateTime.now().hasSame(lastDayRan, "day")) {
+    if (currentTime == nextAlarm.time && DateTime.now().hasSame(lastDayRan, "day")) {
         lamp = await setState(true);
-        prisma.alarm.update({
+        await prisma.alarm.update({
             where: {
                 id: nextAlarm.id
             },
@@ -46,6 +50,7 @@ export const GET: RequestHandler = async () => {
         })
     }
     const timeUntil = DateTime.fromISO(nextAlarm.time).diffNow()
+
 
     return json({
         nextAlarm: nextAlarm.time,
