@@ -18,7 +18,7 @@ if [ -e "$CURRENT_DIR/$SERVICE_FILE" ]; then
     sudo systemctl daemon-reload
 
     # Start the service
-    sudo systemctl start "$SERVICE_FILE"
+    sudo systemctl restart "$SERVICE_FILE"
 
     # Enable the service on boot
     sudo systemctl enable "$SERVICE_FILE"
