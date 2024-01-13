@@ -9,7 +9,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint .",
-		"prod": "ORIGIN=https://192.168.0.90:5173 PORT=5173 node -r dotenv/config build",
+		"prod": "ORIGIN=http://192.168.0.90:5173 PORT=5173 node -r dotenv/config build",
 		"deploy": "yarn build && yarn prod"
 	},
 	"devDependencies": {

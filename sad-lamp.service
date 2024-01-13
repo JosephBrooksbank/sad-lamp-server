@@ -8,8 +8,6 @@ Type=simple
 Restart=always
 RestartSec=1
 User=jbrooksbank
-Environment=ORIGIN=http://192.168.0.90:5173
-Environment=PORT=5173
 ExecStart=/usr/local/bin/yarn deploy
 
 [Install]
