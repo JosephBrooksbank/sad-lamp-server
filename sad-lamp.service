@@ -1,0 +1,16 @@
+[Unit]
+Description=Sad Lamp web server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=jbrooksbank
+Environment=ORIGIN=https://192.168.0.90:5173
+Environment=PORT=5173
+ExecStart=/usr/local/bin/yarn deploy
+
+[Install]
+WantedBy=default.target
