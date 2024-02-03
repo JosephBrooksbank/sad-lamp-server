@@ -36,9 +36,9 @@ export const GET: RequestHandler = async () => {
             isOn: lamp.isOn
         })
     }
-    const lastDayRan = nextAlarm.lastRun ? DateTime.fromISO(nextAlarm.lastRun) : DateTime.now()
+    const lastDayRan = nextAlarm.lastRun ? DateTime.fromISO(nextAlarm.lastRun) : DateTime.fromMillis(0);
 
-    if (currentTime == nextAlarm.time && DateTime.now().hasSame(lastDayRan, "day")) {
+    if (currentTime == nextAlarm.time && !DateTime.now().hasSame(lastDayRan, "day")) {
         lamp = await setState(true);
         await prisma.alarm.update({
             where: {
