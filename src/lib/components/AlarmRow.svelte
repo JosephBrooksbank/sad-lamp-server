@@ -20,16 +20,16 @@
 
 </script>
 
-<div class="card w-11/12 bg-base-100 shadow-xl">
-    <div class="card-body flex flex-row justify-between">
-        <div>
+<div class="card w-full bg-base-100 shadow-xl">
+    <div class="card-body flex flex-row justify-between flex-shrink-0">
+        <div class="text-2xl">
             {alarm.time}
         </div>
         <div>
-            <input bind:checked={alarm.enabled} type="checkbox" class="toggle toggle-primary" on:change={handleCheckboxChanged}/>
+            <input bind:checked={alarm.enabled} type="checkbox" class="toggle toggle-lg toggle-primary" on:change={handleCheckboxChanged}/>
         </div>
         <button class="icon-button" on:click={() => handleDelete(alarm.id)}>
-            <Fa icon={faTrashAlt}/>
+            <Fa icon={faTrashAlt} size="lg"/>
         </button>
     </div>
 </div>
